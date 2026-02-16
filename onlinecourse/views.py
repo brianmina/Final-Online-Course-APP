@@ -163,3 +163,16 @@ def show_exam_result(request, course_id, submission_id):
     return render(request, 'onlinecourse/exam_result_bootstrap.html', context)
 
 
+def course_detail(request, course_id):
+    course = get_object_or_404(Course, pk=course_id)
+    enrollment = None
+    if request.user.is_authenticated:
+        try:
+            enrollment = Enrollment.objects.get(user=request.user, course=course)
+        except Enrollment.DoesNotExist:
+            enrollment = None
+    context = {
+        'course': course,
+        'enrollment': enrollment,
+    }
+    return render(request, 'onlinecourse/course_detail_bootstras.html', context)

@@ -9,6 +9,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description }}</p>
+    {% if enrollment %}
+    <p>You are enrolled in this course.</p>
+    {% else %}
+    <p>You are not enrolled yet.</p>
+    {% endif %}
     <!-- Navigation bar -->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
